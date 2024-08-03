@@ -1,0 +1,41 @@
+---
+const { data } = Astro.props;
+---
+
+<section class="section is-medium" id="github">
+  <div class="container">
+    <div class="title-wrapper has-text-centered">
+      <h2 class="title is-2">ผลงานและ Source Code</h2>
+      <h3 class="subtitle is-5 is-muted">รายการ Source บน Github</h3>
+      <div class="divider is-centered"></div>
+    </div>
+    <div class="columns mt-2 is-gap is-multiline is-mobile">
+      {data ? (
+        data.map((i) => (
+          <div class="column is-one-quarter">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">{i.name}</p>
+                <button class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fas fa-angle-down" aria-hidden="true" />
+                  </span>
+                </button>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <p>{i.description}</p>
+                  <p>
+                    <a class="button" href={i.html_url}>
+                      Source Code
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      ): <p>Notfound Source</p>}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,438 @@
+---
+import Layout from "../layouts/Default.astro";
+import Navbar from "../components/Navbar.astro";
+import NavbarClone from "../components/NavbarClone.astro";
+import ContactForm from "../components/ContactForm.astro";
+import GithubRepository from "../components/GithubRepository.astro"
+import BlogContent from "../components/BlogContent.astro";
+const title = "Home";
+
+const urlGithub = await fetch('https://api.github.com/users/abe27/repos')
+let dataGithub = []
+const objGithub = await urlGithub.json()
+if (typeof(objGithub) != "object") {
+  dataGithub = objGithub
+}
+
+---
+
+<Layout title={title}>
+  <section class="hero is-fullheight is-grey" x-data="initGoToSection()">
+    <Navbar />
+
+    <NavbarClone />
+
+    <div class="hero-body" id="head-hero">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-5 landing-caption">
+            <h1 class="title is-1 is-bold is-spaced">
+              I'm programmer noobs....
+            </h1>
+            <h2 class="subtitle is-5 is-muted">
+              เรียนรู้จากความผิดพลาด ดีกว่าผิดพลาดแล้วไม่เรียนรู้
+            </h2>
+            <div>
+              <a @click="goToSection('content')" href="javascript:" class="button cta primary-btn raised mr-2 to_content">เริ่มเรียนรู้กันเลย</a>
+              <!-- <a class="button cta"> Discover</a> -->
+            </div>
+          </div>
+          <div class="column is-7">
+            <img
+              src="/img/illustrations/worker.png"
+              class="hero-image"
+              alt="Description"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot mb-20 section-feature-grey" id="skill">
+      <div class="container">
+        <div class="tabs is-centered">
+          <ul>
+            <li>
+              <a
+                ><img class="partner-logo" src="/img/logo/clients/systek.svg" />
+              </a>
+            </li>
+            <li>
+              <a
+                ><img class="partner-logo" src="/img/logo/clients/tribe.svg" />
+              </a>
+            </li>
+            <li>
+              <a
+                ><img class="partner-logo" src="/img/logo/clients/kromo.svg" />
+              </a>
+            </li>
+            <li>
+              <a
+                ><img
+                  class="partner-logo"
+                  src="/img/logo/clients/infinite.svg"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                ><img
+                  class="partner-logo"
+                  src="/img/logo/clients/gutwork.svg"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-medium">
+    <div class="container">
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2">Great Power Comes</h2>
+        <h3 class="subtitle is-5 is-muted">With great Responsability</h3>
+        <div class="divider is-centered"></div>
+      </div>
+
+      <div class="feature-cards content-wrapper">
+        <div class="columns">
+          <div class="column is-4">
+            <div
+              class="feature-card is-bordered has-text-centered is-feature-reveal"
+            >
+              <div class="card-title">
+                <h4>App builder</h4>
+              </div>
+              <div class="card-icon">
+                <img src="/img/icons/web.svg" />
+              </div>
+              <div class="card-text">
+                <p>This is some cool explanatory text that is on two rows</p>
+              </div>
+              <div class="card-action">
+                <a href="#" class="button btn-align-md primary-btn raised"
+                  >Free Trial</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="column is-4">
+            <div
+              class="feature-card is-bordered has-text-centered is-feature-reveal"
+            >
+              <div class="card-title">
+                <h4>Cloud integration</h4>
+              </div>
+              <div class="card-icon">
+                <img src="/img/icons/rocket.svg" />
+              </div>
+              <div class="card-text">
+                <p>This is some explanatory text that is on two rows</p>
+              </div>
+              <div class="card-action">
+                <a href="#" class="button btn-align-md primary-btn raised"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="column is-4">
+            <div
+              class="feature-card is-bordered has-text-centered is-feature-reveal"
+            >
+              <div class="card-title">
+                <h4>Addons & Plugins</h4>
+              </div>
+              <div class="card-icon">
+                <img src="/img/icons/light-bulb.svg" />
+              </div>
+              <div class="card-text">
+                <p>This is some explanatory text that is on two rows</p>
+              </div>
+              <div class="card-action">
+                <a href="#" class="button btn-align-md primary-btn raised"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="history-tl-container">
+        <ul class="tl">
+          <li class="tl-item" ng-repeat="item in retailer_history">
+            <div class="timestamp">
+              3rd March 2015<br /> 7:00 PM
+            </div>
+            <div class="item-title">Start from Shire</div>
+            <div class="item-detail">Don't forget the ring</div>
+          </li>
+          <li class="tl-item" ng-repeat="item in retailer_history">
+            <div class="timestamp">
+              19th March 2015<br /> 3:00 PM
+            </div>
+            <div class="item-title">Kill some Orcs</div>
+            <div class="item-detail">Don't enter the caves!!</div>
+          </li>
+          <li class="tl-item" ng-repeat="item in retailer_history">
+            <div class="timestamp">
+              1st June 2015<br /> 7:00 PM
+            </div>
+            <div class="item-title">Throw that goddamn ring in the lava</div>
+            <div class="item-detail">Also, throw that Gollum too</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-medium section-feature-grey">
+    <div class="container">
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2">Awesome Features</h2>
+        <h3 class="subtitle is-5 is-muted">To make you super happy</h3>
+        <div class="divider is-centered"></div>
+      </div>
+
+      <div class="columns is-vcentered side-feature mt-60">
+        <div class="column is-4 is-offset-2">
+          <h3 class="title is-3 mb-10 is-title-reveal">Connect with people</h3>
+          <p class="subtitle is-5 is-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum
+            audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime
+            contra Aristonem dicuntur a Chryippo.
+          </p>
+        </div>
+        <div class="column is-5">
+          <img src="/img/illustrations/features/feature-1.png" alt="" />
+        </div>
+      </div>
+
+      <div class="columns is-vcentered side-feature mt-60">
+        <div class="column is-5 is-offset-1">
+          <img src="/img/illustrations/features/feature-2.png" alt="" />
+        </div>
+        <div class="column is-4 is-offset-1">
+          <h3 class="title is-3 mb-10 is-title-reveal">Collaborate easily</h3>
+          <p class="subtitle is-5 is-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum
+            audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime
+            contra Aristonem dicuntur a Chryippo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-feature-grey is-medium">
+    <div class="container">
+      <div class="columns is-vcentered app-side">
+        <div class="column is-4 is-offset-1">
+          <h3 class="title is-3 is-spaced is-title-reveal">An intuitive app</h3>
+          <p class="subtitle is-5 is-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum
+            audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime
+            contra Aristonem dicuntur a Chryippo.
+          </p>
+        </div>
+        <div class="column is-7">
+          <div class="has-text-centered">
+            <img class="side-image" src="/img/illustrations/workers.svg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ## Skill -->
+  <section class="section is-medium" id="skill">
+    <div class="container">
+      <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2">Wait, there's more</h2>
+        <h3 class="subtitle is-5 is-muted">To make you super happy</h3>
+        <div class="divider is-centered"></div>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="columns is-multiline icon-list">
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="fa6-brands:github"
+                ></iconify-icon>
+              </div>
+              <h4>Github</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="fa6-brands:bitbucket"
+                ></iconify-icon>
+              </div>
+              <h4>Bitbucket</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="fa6-brands:slack"
+                ></iconify-icon>
+              </div>
+              <h4>Slack</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="fa6-brands:npm"
+                ></iconify-icon>
+              </div>
+              <h4>Npm</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon
+                  class="iconify"
+                  icon="fluent:javascript-16-regular"></iconify-icon>
+              </div>
+              <h4>Javascript</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="fontisto:nodejs"
+                ></iconify-icon>
+              </div>
+              <h4>Nodejs</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="ph:angular-logo"
+                ></iconify-icon>
+              </div>
+              <h4>Angular</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="bi:google"></iconify-icon>
+              </div>
+              <h4>Google</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="carbon:logo-python"
+                ></iconify-icon>
+              </div>
+              <h4>Python</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="bi:wordpress"
+                ></iconify-icon>
+              </div>
+              <h4>WordPress</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="icon-park-solid:android"
+                ></iconify-icon>
+              </div>
+              <h4>Android</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+          <div class="column is-3">
+            <div class="feature-icon has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <iconify-icon class="iconify" icon="uiw:apple"></iconify-icon>
+              </div>
+              <h4>Apple</h4>
+              <p>Some feature text</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ### Blog Content -->
+  <BlogContent />
+
+  <!-- ### Github -->
+  <GithubRepository data={dataGithub}/>
+  <!-- ### Contact Form -->
+  <ContactForm />
+
+  <div id="auth-modal" class="modal">
+    <div class="modal-background modal-dismiss"></div>
+    <div class="modal-content">
+      <div class="flex-card auth-card">
+        <div class="tabs-wrapper">
+          <div class="tabs">
+            <ul>
+              <li class="is-active" data-tab="login-tab"><a>Login</a></li>
+              <li data-tab="register-tab"><a>Register</a></li>
+            </ul>
+          </div>
+          <div id="login-tab" class="tab-content is-active">
+            <div class="field">
+              <label>Username</label>
+              <div class="control">
+                <input
+                  type="text"
+                  class="input is-medium"
+                  placeholder="Enter username"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  class="input is-medium"
+                  placeholder="Enter password"
+                />
+              </div>
+            </div>
+
+            <a class="button is-fullwidth secondary-btn is-rounded raised"
+              >Log in</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large modal-dismiss" aria-label="close"
+    ></button>
+  </div>
+</Layout>
