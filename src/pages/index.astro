@@ -10,8 +10,10 @@ const title = "Home";
 const urlGithub = await fetch('https://api.github.com/users/abe27/repos')
 let dataGithub = []
 const objGithub = await urlGithub.json()
-if (typeof(objGithub) != "object") {
-  dataGithub = objGithub
+if (typeof(objGithub) == "object") {
+  if (objGithub?.message != true) {
+    dataGithub = objGithub
+  }
 }
 
 ---
