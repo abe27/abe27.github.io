@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar.astro";
 import NavbarClone from "../components/NavbarClone.astro";
 import ContactForm from "../components/ContactForm.astro";
 import GithubRepository from "../components/GithubRepository.astro"
-import BlogContent from "../components/BlogContent.astro";
 const title = "Home";
 
 const urlGithub = await fetch('https://api.github.com/users/abe27/repos')
@@ -50,7 +49,7 @@ if (typeof(objGithub) == "object") {
       </div>
     </div>
 
-    <div class="hero-foot mb-20 section-feature-grey" id="skill">
+    <div class="hero-foot mb-20 section-feature-grey">
       <div class="container">
         <div class="tabs is-centered">
           <ul>
@@ -252,7 +251,7 @@ if (typeof(objGithub) == "object") {
   </section>
 
   <!-- ## Skill -->
-  <section class="section is-medium" id="skill">
+  <section class="section is-medium section-light-grey" id="skill">
     <div class="container">
       <div class="title-wrapper has-text-centered">
         <h2 class="title is-2">Wait, there's more</h2>
@@ -387,7 +386,7 @@ if (typeof(objGithub) == "object") {
   </section>
 
   <!-- ### Blog Content -->
-  <BlogContent />
+  <!-- <BlogContent /> -->
 
   <!-- ### Github -->
   <GithubRepository data={dataGithub}/>

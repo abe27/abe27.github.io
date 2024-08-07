@@ -37,25 +37,18 @@ const { data } = Astro.props;
             </div>
           ))
         ) : (
-          <div class="column is-one-quarter">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title" />
-                <button class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fas fa-angle-down" aria-hidden="true" />
-                  </span>
-                </button>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <p>i.description</p>
-                  <p>
-                    <a class="button">Source Code</a>
-                  </p>
-                </div>
+          <div class="column is-full">
+            <article class="message is-warning">
+              <div class="message-header">
+                <p>Warning</p>
+                <button class="delete" aria-label="delete" />
               </div>
-            </div>
+              <div class="message-body">
+                เกิดข้อผิดพลาด
+                <strong>ขณะนี้ไม่สามารถ</strong>แสดงข้อมูลจาก{" "}
+                <a href="https://www.github.io">Github.io</a> ได้
+              </div>
+            </article>
           </div>
         )
       }
