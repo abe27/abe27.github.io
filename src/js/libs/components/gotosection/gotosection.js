@@ -8,8 +8,7 @@ export function initGoToSection() {
       });
     },
     goToSection(idName) {
-      console.log(idName)
       document.getElementById(idName).scrollIntoView();
-    }
-  }
+    },
+  };
 }

@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Default.astro";
+import Navbar from "../../components/NavbarBlog.astro";
+import NavbarClone from "../../components/NavbarClone.astro";
+const title = "บทความ";
+---
+
+<Layout title={title}>
+  <section class="hero is-fullheight is-grey" x-data="initGoToSection()">
+    <Navbar />
+
+    <NavbarClone />
+  </section>
+</Layout>
