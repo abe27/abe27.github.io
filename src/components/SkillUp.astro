@@ -1,0 +1,137 @@
+---
+const skillData = [
+  {
+    name: "Frontend",
+    child: [
+      {
+        name: "NextJS",
+        value: 100,
+      },
+      {
+        name: "AstroJS",
+        value: 70,
+      },
+    ],
+  },
+  {
+    name: "Backend",
+    child: [
+      {
+        name: "Laravel",
+        value: 100,
+      },
+      {
+        name: "Python (Django/FastAPI)",
+        value: 100,
+      },
+      {
+        name: "Express.js",
+        value: 80,
+      },
+    ],
+  },
+  {
+    name: "Database",
+    child: [
+      {
+        name: "Oracle",
+        value: 100,
+      },
+      {
+        name: "Posgresql",
+        value: 100,
+      },
+      {
+        name: "MongoDB",
+        value: 90,
+      },
+    ],
+  },
+  {
+    name: "DevOps/Infra",
+    child: [
+      {
+        name: "Docker/Podman",
+        value: 100,
+      },
+      {
+        name: "Nginx",
+        value: 100,
+      },
+      {
+        name: "GitHub Actions",
+        value: 100,
+      },
+      {
+        name: "Firebase",
+        value: 80,
+      },
+      {
+        name: "Vercel",
+        value: 100,
+      },
+      {
+        name: "Netlify",
+        value: 100,
+      },
+    ],
+  },
+  {
+    name: "Tools",
+    child: [
+      {
+        name: "VS Code",
+        value: 100,
+      },
+      {
+        name: "Git",
+        value: 100,
+      },
+      {
+        name: "Postman",
+        value: 100,
+      },
+    ],
+  },
+];
+
+const checkSkill = (value: number) => {
+  var txtClass = "w-56 progress progress-error";
+  if (value === 100) {
+    txtClass = "w-56 progress progress-success";
+  } else if (value >= 90) {
+    txtClass = "w-56 progress progress-warning";
+  } else if (value >= 80) {
+    txtClass = "w-56 progress progress-info";
+  } else if (value >= 70) {
+    txtClass = "w-56 progress progress-secondary";
+  }
+  return txtClass;
+};
+---
+
+<section>
+  <h1>Skills</h1>
+  <p>ความสามารถและประสบการณ์พัฒนาเว็บทั้งฝั่ง Frontend และ Backend</p>
+  <div class="flex flex-wrap flex-1/3 max-w-full space-x-8 pt-4">
+    {
+      skillData.map((skill) => (
+        <div class="max-w-2xl pt-4">
+          <h1 class="font-bold">{skill.name}</h1>
+          {skill.child.map((c) => (
+            <div class="pt-2">
+              {c.name} {c.value}%
+              <p>
+                <progress
+                  class={checkSkill(c.value)}
+                  value={c.value}
+                  max="100"
+                />
+              </p>
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</section>

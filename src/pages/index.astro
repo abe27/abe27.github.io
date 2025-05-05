@@ -1,0 +1,55 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import "@/styles/global.css";
+import SkillUp from "@/components/SkillUp.astro";
+import Education from "@/components/Education.astro";
+import WorkExperience from "@/components/WorkExperience.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main class="mx-auto max-w-7xl">
+      <section class="h-screen hero" id="resume">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <img src="/portfolios/worker.png" class="w-2xl" />
+          <div>
+            <h1 class="text-5xl font-bold">I'm Taweechai Yuenyang</h1>
+            <p class="py-6">
+              พัฒนาระบบเว็บแอปที่เร็วปลอดภัยและใช้งานง่ายด้วยเทคโนโลยี Django
+              และ Laravel
+            </p>
+            <a
+              href="/downloads/resume.pdf"
+              class="bg-blue-400 h-96 rounded-2xl p-4 text-white hover:text-blue-400 hover:bg-yellow-50"
+              target="_blank">ดาวน์โหลดเรซูเม่</a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="hero border-t-2 border-gray-300" id="skill">
+        <div class="hero-content">
+          <SkillUp />
+        </div>
+      </section>
+      <section class="hero border-t-2 border-gray-300 flex" id="education">
+        <div class="hero-content">
+          <Education />
+        </div>
+      </section>
+      <section class="hero border-t-2 border-gray-300" id="education">
+        <div class="hero-content items-start">
+          <WorkExperience />
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
