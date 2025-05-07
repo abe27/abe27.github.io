@@ -1,0 +1,126 @@
+---
+title: "Bitkub Service"
+description: "ระบบ Track ราคา crypto จากเว็บ Bitkub"
+pubDate: "May 7 2025"
+heroImage: "/projects/bitkub-service.png"
+language: "PHP,Laravel"
+---
+
+<center>Laravel Bitkub Service Package</center>
+<p />
+Laravel package สำหรับเชื่อมต่อกับ Bitkub API 
+
+#### พัฒนาจากภาษา **PHP** โดยใช้กับ Framework อย่าง **Laravel**
+# Laravel Bitkub Service Package
+
+A Laravel package for integrating with the Bitkub Cryptocurrency Exchange API.
+
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require abe27/bitkub-service
+```
+
+## Publish Configuration
+
+After installing the package, publish the configuration file:
+
+```bash
+php artisan vendor:publish --tag=bitkub-config
+```
+
+This will create a `config/bitkub.php` configuration file in your project.
+
+## Configuration
+
+Add your Bitkub API credentials to your `.env` file:
+
+```
+BITKUB_API_KEY=your-api-key
+BITKUB_API_SECRET=your-api-secret
+BITKUB_ENDPOINT=https://api.bitkub.com
+```
+
+## Usage
+
+### Basic Usage
+
+```php
+// Get market status
+$status = Bitkub::status();
+
+// Get server time
+$serverTime = Bitkub::serverTime();
+
+// Get market symbols
+$symbols = Bitkub::symbols();
+
+// Get ticker information for all symbols
+$ticker = Bitkub::ticker();
+
+// Get ticker information for a specific symbol
+$btcTicker = Bitkub::ticker('BTC');
+```
+
+### Authentication Required API
+
+For endpoints that require authentication, you need to set up your API key and secret in the configuration file.
+
+```php
+// Get user balances
+$balances = Bitkub::balances();
+
+// Create a buy order
+$buyOrder = Bitkub::createBuyOrder('BTC', 0.001, 500000, 'limit');
+
+// Create a sell order
+$sellOrder = Bitkub::createSellOrder('BTC', 0.001, 550000, 'limit');
+
+// Cancel an order
+$cancelOrder = Bitkub::cancelOrder('BTC', 12345, 'buy');
+```
+
+## Available Methods
+
+### Public API Endpoints
+
+-   `status()` - Get server status
+-   `serverTime()` - Get server time
+-   `symbols()` - Get market symbols
+-   `ticker($symbol = null)` - Get ticker information
+
+### Private API Endpoints
+
+-   `balances()` - Get user balances
+-   `createBuyOrder($symbol, $amount, $rate, $type = 'limit')` - Create a buy order
+-   `createSellOrder($symbol, $amount, $rate, $type = 'limit')` - Create a sell order
+-   `cancelOrder($symbol, $id, $side)` - Cancel an order
+
+## Error Handling
+
+All API errors will throw a `BitkubException` which can be caught and handled appropriately:
+
+```php
+use Abe27\Bitkub\Exceptions\BitkubException;
+
+try {
+    $balances = Bitkub::balances();
+} catch (BitkubException $e) {
+    // Handle Bitkub API error
+    $message = $e->getMessage();
+    $errorCode = $e->getErrorCode();
+
+    // Log or handle the error
+}
+```
+
+## License
+
+This package is open-sourced software licensed under the MIT license.
+
+
+## **ขณะ นี้กำลังอยู่ในช่วงการพัฒนา**
+
+[Source Code](https://github.com/abe27/bitkub-service.git)
